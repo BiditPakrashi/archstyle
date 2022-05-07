@@ -1,25 +1,20 @@
-# TrashBet
-[SaltyBet](https://www.saltybet.com/) - style betting system but in Kotlin-Ktor
+# Architecture With Kotlin-Ktor and SvelteJS
 
-![ui demo](./.github/assets/ui1.png)
 
 ## Features
-* create bets with a binary outcome
-* place wagers on bets with working odds calculation
-* working payouts
+* PlaceHolder  - Why Ktor 
+* Placeholder - Why SvelteJS
+* AI/ ML 
 * REST API
-* session auth
-* admin role
 
 ## Stack
 * Front end
-  * [`sveltejs`](https://svelte.dev/) framework because it looked lighter than `react`
+  * [`sveltejs`](https://svelte.dev/) Compliled version / Faster than Vue and React .
   * [`carbon-components-svelte`](https://github.com/IBM/carbon-components-svelte) ui components
   * `app/web`
 * Back end
-  * [`ktor`](https://ktor.io/) microservice framework
-  * [`exposed`](https://github.com/JetBrains/Exposed) orm
-  * `app/src/main/kotlin/trashbet`
+  * [`ktor`](https://ktor.io/) non I/O blocking  microservice framework 
+  * `app/src/main/kotlin/archstyle`
 * Ops
   * scripts in `bin`
   * single `Dockerfile` for the web tier
@@ -39,8 +34,8 @@ app available on port 8080
 ### Configuration
 Environment variables
 ```sh
-TRASHBET_PORT = 8080
-TRASHBET_ENVIRONMENT = testing
+ARCHSTYLE_PORT = 8080
+ARCHSTYLE_ENVIRONMENT = testing
 ```
 
 ### API
@@ -53,7 +48,7 @@ health [endpoint](http://localhost:8080/health)
 
 web bundle is also being served on this port at the webroot
 
-[api spec](./app/src/test/kotlin/trashbet/AppTest.kt) `¯\_(ツ)_/¯`
+[api spec](./app/src/test/kotlin/archstyle/AppTest.kt) `¯\_(ツ)_/¯`
 
 ### Web
 create `app/web/.env`
@@ -74,4 +69,4 @@ available on [port 5000](http://localhost:5000/)
 ```
 
 ## Contributors
-[JoelPagliuca](https://github.com/JoelPagliuca)
+[Bidit Pakrashi](https://github.com/BiditPakrashi/)
