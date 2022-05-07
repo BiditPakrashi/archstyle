@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres:13-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: trashbet
+      POSTGRES_DB: trashbet
+      POSTGRES_PASSWORD: trashbet
+
+  adminer:
+    image: adminer
+    ports:
+      - 8044:8080
