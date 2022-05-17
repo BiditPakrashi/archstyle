@@ -1,5 +1,4 @@
-package trashbet
-
+package archstyle
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.features.*
@@ -10,51 +9,24 @@ import io.ktor.server.engine.*
 import io.ktor.server.netty.Netty
 import io.ktor.sessions.*
 import kotlinx.serialization.json.Json
-import trashbet.webController
+import archstyle.webController
+import archstyle.unauthgithubController
+import io.ktor.gson.gson
 
 
 fun Application.main() {
     @Suppress("EXPERIMENTAL_API_USAGE")
-    // val deploymentEnvironment = environment.config.property("ktor.deployment.environment").getString()
-    // val dbUser = environment.config.propertyOrNull("ktor.database.user")
-    // val dbPass = environment.config.propertyOrNull("ktor.database.pass")
-    // val dbDb = environment.config.propertyOrNull("ktor.database.db")
-    // var authenticationScheme = "basic"
 
-    // when (deploymentEnvironment) {
-    //     "test" -> {
-    //         Database.connect("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;", "org.h2.Driver")
-    //         authenticationScheme = "basic"
-    //     }
-    //     "development" -> {
-    //         Database.connect("jdbc:postgresql://localhost:5432/${dbDb!!.getString()}", driver = "org.postgresql.Driver",
-    //                 user = dbUser!!.getString(), password = dbPass!!.getString())
-    //         seedData(true)
-    //     }
-    //     "production" -> {
-    //         Database.connect("jdbc:postgresql://db:5432/${dbDb!!.getString()}", driver = "org.postgresql.Driver",
-    //                 user = dbUser!!.getString(), password = dbPass!!.getString())
-    //         seedData(false)
-    //     }
-    // }
-
-    // install(Authentication) {
-    //     registerAuth()
-    // }
-
-    // install(AuthN)
-
-    // install(Sessions) {
-    //     cookie<UserPrincipal>(AUTH_COOKIE, storage = SessionStorageMemory()) {}
-    // }
 
     install(StatusPages) {
         registerExceptionHandling()
     }
 
     install(ContentNegotiation) {
-        register(ContentType.Application.Json, SerializationConverter(Json { prettyPrint = true }))
+    gson {
+        setPrettyPrinting()
     }
+}
 
     install(CORS) {
         method(HttpMethod.Options)
@@ -71,18 +43,12 @@ fun Application.main() {
         anyHost() //LOL
     }
 
-  //  val userService = UserService()
-    // val betService = BetService()
-    // val wagerService = WagerService()
-
+   val unAuthGithubService = UnAuthGithubService()
     install(Routing) {
-      //  unauthedControllers(userService)
+        unauthedControllers()
       webController()
-        // authenticate(authenticationScheme) {
-        //     userController(userService)
-        //     betController(betService, wagerService)
-        //     wagerController(wagerService)
-        // }
+      unauthgithubController(unAuthGithubService)
+
     }
 }
 

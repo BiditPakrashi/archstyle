@@ -1,16 +1,21 @@
 # Architecture With Kotlin-Ktor and SvelteJS
+![Screenshot](archstylescreenshot.png)
 
 
 ## Features
-* PlaceHolder  - Why Ktor 
-* Placeholder - Why SvelteJS
+
+* Showing data frrom open API on US Population  
+* Showing Auto Generated QR code 
+*  Why Ktor  - Create asynchronous client and server applications. Anything from microservices to multiplatform HTTP client apps in a simple way. Open Source, free, and fun!
+*  Why SvelteJS - 
+Svelte is popular for being faster than any other library. This is due to shifting the step of loading a framework intended for building a virtual DOM. Rather than using a tool during the running process, it is compiled to JS during the building stage. This means that the application needs no dependencies to start.
 * AI/ ML 
 * REST API
 
 ## Stack
 * Front end
   * [`sveltejs`](https://svelte.dev/) Compliled version / Faster than Vue and React .
-  * [`carbon-components-svelte`](https://github.com/IBM/carbon-components-svelte) ui components
+  * [`carbon-components-svelte`](https://github.com/IBM/carbon-components-svelte) ui components. Best for Accesibility
   * `app/web`
 * Back end
   * [`ktor`](https://ktor.io/) non I/O blocking  microservice framework 

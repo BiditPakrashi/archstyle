@@ -1,3 +1,3 @@
 import { writable } from 'svelte/store';
 
-export const betStore = writable([]);
+export const githubStore = writable([]);

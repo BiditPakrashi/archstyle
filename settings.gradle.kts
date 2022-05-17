@@ -1,2 +1,2 @@
-rootProject.name = "trashbet"
+rootProject.name = "ARCHSTYLE"
 include("app")

@@ -1,6 +1,6 @@
 <script>
-  import BetAdmin from "./BetAdmin.svelte";
-  import BetWagerView from "./BetWagerView.svelte";
+  import BetAdmin from "./Admin.svelte";
+  import BetWagerView from "./SourceDataView.svelte";
   import Notifications from "./Notifications.svelte";
 
   export let route = "home"

@@ -26,12 +26,12 @@
 </script>
 
 <Theme theme="g90">
-  
-  <Header company="" platformName="Trashbet" bind:isSideNavOpen>
+
+  <Header company="" platformName="ArchStyle" bind:isSideNavOpen>
     <div slot="skip-to-content">
       <SkipToContent />
     </div>
-    
+
     {#if $store != null}
       <HeaderNav>
         <Points/>
@@ -40,18 +40,16 @@
           <HeaderNavItem text="Bets admin" on:click={() => {route = "betAdmin"}}/>
         {/if}
       </HeaderNav>
-      
+
       <HeaderUtilities>
         <HeaderGlobalAction aria-label="Logout" icon={Logout20} on:click={handleLogout}/>
       </HeaderUtilities>
     {/if}
   </Header>
-    
+
   <Content>
-    {#if $store != null}
+
       <Main bind:route/>
-    {:else}
-      <Login/>
-    {/if}
+
   </Content>
 </Theme>

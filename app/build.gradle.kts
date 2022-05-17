@@ -26,13 +26,19 @@ dependencies {
     implementation("io.ktor:ktor-serialization:$ktor_version")
     implementation("io.ktor:ktor-auth:$ktor_version")
     implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation("io.ktor:ktor-client-core:$ktor_version")
+    implementation("io.ktor:ktor-client-cio:$ktor_version")
+    implementation ("io.ktor:ktor-gson:$ktor_version")
+    implementation("com.google.code.gson:gson:2.7")
+   // implementation("io.ktor:ktor-client-content-negotiation:2.0.1")
+    //implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.1")
 
     // test
     testImplementation("io.ktor:ktor-server-test-host:$ktor_version")
 }
 
 application {
-    mainClass.set("trashbet.AppKt")
+    mainClass.set("archstyle.AppKt")
 }
 
 tasks {
