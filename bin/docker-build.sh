@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build -t trashbet .
+docker build -t archstyle .

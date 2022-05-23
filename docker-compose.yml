@@ -2,14 +2,6 @@ version: '3.1'
 
 services:
 
-  db:
-    image: postgres:13-alpine
-    restart: always
-    environment:
-      POSTGRES_USER: "${DB_USER:-trashbet}"
-      POSTGRES_DB: "${DB_USER:-trashbet}"
-      POSTGRES_PASSWORD: "${DB_PASS:-trashbet}"
-
   adminer:
     image: adminer
     restart: always
@@ -17,12 +9,9 @@ services:
       - 8044:8080
 
   api:
-    image: trashbet
-    depends_on:
-      - db
+    image: archstyle
     ports:
       - 8080:8080
     environment:
-      TRASHBET_ENVIRONMENT: production
-      TRASHBET_DB_USER: "${DB_USER}"
-      TRASHBET_DB_PASS: "${DB_PASS}"
+      ARCHSTYLE_ENVIRONMENT: production
+
