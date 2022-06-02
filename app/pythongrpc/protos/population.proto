@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+import "google/protobuf/Empty.proto";
+
+// Interface exported by the server.
+service PopulationDataService {
+    // A simple RPC.
+    //
+    // Obtains the Population at a given position.
+    //
+    rpc GetPopulation(google.protobuf.Empty) returns (PopulationData) {}
+
+
+  }
+
+message PopulationData {
+
+    message Data {
+        string ID = 1;
+        string Nation = 2;
+        string Year = 4;
+        uint32 Population = 5;
+    }
+
+    message Annotations {
+        string source_name = 1;
+        string source_description = 2;
+        string dataset_name = 3;
+        string dataset_link = 4;
+        string table_id = 5;
+        string topic = 6;
+        string subtopic = 7;
+    }
+
+    message Source {
+        repeated string measures = 1;
+        Annotations annotations = 2;
+        string name = 3;
+        repeated google.protobuf.Any substitutions = 4;
+    }
+
+    repeated Data data = 1;
+    repeated Source source = 2;
+}
+
+
+
