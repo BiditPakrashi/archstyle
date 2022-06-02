@@ -73,6 +73,24 @@ available on [port 5000](http://localhost:5000/)
 ./gradlew test
 ```
 
+### GRPC 
+```
+$ python -m pip install grpcio
+```
+### gRPC tools
+```
+Python’s gRPC tools include the protocol buffer compiler protoc and the special plugin for generating server and client code from .proto service definitions
+To install gRPC tools, run:
+
+$ python -m pip install grpcio-tools
+```
+### Generate gRPC code 
+```
+python -m grpc_tools.protoc --proto_path=. --python_out=. --grpc_python_out=. ./protos/population.proto
+
+```
+
+
 
 A new Backend With Python GRPC is added .
 ![Architecure Context](CONTEXT.png)
