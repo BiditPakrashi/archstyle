@@ -74,9 +74,11 @@ available on [port 5000](http://localhost:5000/)
 ```
 
 
+A new Backend With Python GRPC is added .
 ![Architecure Context](CONTEXT.png)
 ![Architecure Container](CONTAINER.png)
 ![Architecure Components](Components.png)
+![Architecure Components-Modified](GRPC.png)
 
 
 ## Contributors
