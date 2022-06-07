@@ -1,9 +1,16 @@
+buildscript {
+	dependencies {
+		classpath("com.google.protobuf:protobuf-gradle-plugin:0.8.13")
+	}
+}
+
 plugins {
     val kotlin_version = "1.4.0"
 
     application
     kotlin("jvm") version kotlin_version
     kotlin("plugin.serialization") version kotlin_version
+    id("com.google.protobuf") version "0.8.13"
 }
 
 repositories {

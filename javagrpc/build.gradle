@@ -1,0 +1,84 @@
+//file:noinspection GrUnresolvedAccess
+//file:noinspection GroovyAssignabilityCheck
+plugins {
+    id 'java'
+    id 'idea'
+    id 'com.google.protobuf' version '0.8.18'
+
+    id 'jacoco'
+}
+
+group 'com.archstyle.grpc'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    protoVersion = '3.20.1'
+    grpcVersion = '1.46.0'
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:$protoVersion"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:$grpcVersion"
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
+
+sourceSets.main.java.srcDir new File(buildDir, 'generated/source')
+
+dependencies {
+    runtimeOnly "io.grpc:grpc-netty-shaded:$grpcVersion"
+    implementation "io.grpc:grpc-protobuf:$grpcVersion"
+    implementation "io.grpc:grpc-stub:$grpcVersion"
+    implementation "io.grpc:grpc-services:$grpcVersion"
+    compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
+    implementation "com.google.protobuf:protobuf-java-util:$protoVersion"
+
+    implementation 'org.mongodb:mongodb-driver-sync:4.6.0'
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation 'org.mockito:mockito-core:4.5.1'
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+
+    reports {
+        html.enabled false
+        xml.enabled false
+        csv.enabled true
+        csv.destination file("${buildDir}/reports/jacoco/jacoco.csv")
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(
+                dir: it,
+                includes: [
+                    "greeting/server/GreetingServiceImpl.class",
+                    "calculator/server/CalculatorServiceImpl.class",
+                    "blog/server/BlogServiceImpl.class",
+                    "blog/client/BlogClient.class",
+                ]
+            )
+        }))
+    }
+}
