@@ -53,7 +53,6 @@ health [endpoint](http://localhost:8080/health)
 
 web bundle is also being served on this port at the webroot
 
-[api spec](./app/src/test/kotlin/archstyle/AppTest.kt) `¯\_(ツ)_/¯`
 
 ### Web
 create `app/web/.env`
